@@ -5,4 +5,7 @@
     <color name="pink_primary">#D81B60</color>
     <color name="pink_light">#FF5C8D</color>
     <color name="pink_dark">#A00037</color>
+    <color name="secondary_text_color_light">#80000000</color>
+    <color name="secondary_text_color_dark">#80ffffff</color>
+    <color name="grey">#888888</color>
 </resources>
