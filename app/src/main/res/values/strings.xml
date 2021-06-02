@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Social Media</string>
+
+    <!--region Bottom navigation bar titles -->
+    <string name="home">Home</string>
+    <string name="favourites">Favourites</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
+    <!-- endregion -->
+
+</resources>
