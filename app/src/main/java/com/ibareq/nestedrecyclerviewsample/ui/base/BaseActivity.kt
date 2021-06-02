@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.ibareq.nestedrecyclerviewsample.R
 
 abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
 
@@ -16,6 +17,7 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
         get() = _binding as VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_NestedRecyclerViewSample)
         super.onCreate(savedInstanceState)
         _binding = bindingInflater(layoutInflater)
         setContentView(binding.root)
