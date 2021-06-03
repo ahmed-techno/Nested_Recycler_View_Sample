@@ -24,7 +24,7 @@ class HomeAdapter(val items: List<HomeItem<Any>>) : RecyclerView.Adapter<HomeAda
             }
             VIEW_TYPE_NEW_POST -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_new_post, parent, false)
-                PostViewHolder(view)
+                NewPostViewHolder(view)
             }
             VIEW_TYPE_POST -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false)
@@ -47,7 +47,10 @@ class HomeAdapter(val items: List<HomeItem<Any>>) : RecyclerView.Adapter<HomeAda
     }
 
     private fun bindNewPost(holder: NewPostViewHolder, position: Int){
-
+        val hintText = items[position].item as String
+        holder.binding.apply {
+            inputNewPost.hint = hintText
+        }
     }
 
     private fun bindPost(holder: PostViewHolder, position: Int){

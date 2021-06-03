@@ -9,4 +9,5 @@
     <color name="secondary_text_color_dark">#80ffffff</color>
     <color name="grey">#888888</color>
     <color name="background_color">#EDEDED</color>
+    <color name="input_background_color">#FFFFFF</color>
 </resources>
