@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ibareq.nestedrecyclerviewsample.R
 import com.ibareq.nestedrecyclerviewsample.data.domain.Story
 import com.ibareq.nestedrecyclerviewsample.databinding.ItemAddStoryBinding
@@ -47,6 +48,7 @@ class StoriesAdapter(private val items: List<Story>) : RecyclerView.Adapter<Stor
             } else {
                 ringStoryNotSeen.visibility = View.VISIBLE
             }
+            Glide.with(this.root.context).load(currentStory.imgUrl).into(imageStory)
         }
     }
 

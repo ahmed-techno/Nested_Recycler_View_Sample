@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ibareq.nestedrecyclerviewsample.R
 import com.ibareq.nestedrecyclerviewsample.data.domain.HomeItem
 import com.ibareq.nestedrecyclerviewsample.data.domain.Post
@@ -64,6 +65,8 @@ class HomeAdapter(private val items: List<HomeItem<Any>>) : RecyclerView.Adapter
         holder.binding.apply {
             textUsername.text = currentPost.username
             textDate.text = currentPost.date
+            Glide.with(this.root.context).load(currentPost.postImgUrl).into(imagePost)
+            Glide.with(this.root.context).load(currentPost.profileImgUrl).into(imageProfile)
         }
     }
 
