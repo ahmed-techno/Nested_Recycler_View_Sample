@@ -1,6 +1,5 @@
 package com.ibareq.nestedrecyclerviewsample.ui
 
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import com.ibareq.nestedrecyclerviewsample.R
@@ -23,6 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val bindingInflater: (LayoutInflater) -> ActivityMainBinding = ActivityMainBinding::inflate
 
     override fun setup() {
+        replaceFragment(homeFragment)
         initNavigationBar()
     }
 

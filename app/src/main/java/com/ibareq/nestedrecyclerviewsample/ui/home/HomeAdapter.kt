@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ibareq.nestedrecyclerviewsample.R
 import com.ibareq.nestedrecyclerviewsample.data.domain.HomeItem
+import com.ibareq.nestedrecyclerviewsample.data.domain.Post
 import com.ibareq.nestedrecyclerviewsample.data.domain.enums.HomeItemType
 import com.ibareq.nestedrecyclerviewsample.databinding.ItemNewPostBinding
 import com.ibareq.nestedrecyclerviewsample.databinding.ItemPostBinding
@@ -50,7 +51,11 @@ class HomeAdapter(val items: List<HomeItem<Any>>) : RecyclerView.Adapter<HomeAda
     }
 
     private fun bindPost(holder: PostViewHolder, position: Int){
-
+        val currentPost = items[position].item as Post
+        holder.binding.apply {
+            textUsername.text = currentPost.username
+            textDate.text = currentPost.date
+        }
     }
 
     override fun getItemCount() = items.size

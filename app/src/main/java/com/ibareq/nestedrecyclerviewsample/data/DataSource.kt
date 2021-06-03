@@ -10,6 +10,13 @@ object DataSource {
     )
 
     fun getPosts(): List<Post> = listOf(
-        Post(username = "ali", date = "2021/6/3", profileImgUrl = "a", postImgUrl = "a")
+        Post(username = "ali", date = "2021/6/3", profileImgUrl = "a", postImgUrl = "a"),
+        Post(username = "ali", date = "2021/6/3", profileImgUrl = "a", postImgUrl = "a"),
+        Post(username = "ali", date = "2021/6/3", profileImgUrl = "a", postImgUrl = "a"),
+        Post(username = "ali", date = "2021/6/3", profileImgUrl = "a", postImgUrl = "a"),
+        Post(username = "ali", date = "2021/6/3", profileImgUrl = "a", postImgUrl = "a"),
+        Post(username = "ali", date = "2021/6/3", profileImgUrl = "a", postImgUrl = "a"),
+        Post(username = "ali", date = "2021/6/3", profileImgUrl = "a", postImgUrl = "a"),
+        Post(username = "ali", date = "2021/6/3", profileImgUrl = "a", postImgUrl = "a"),
     )
 }
