@@ -16,7 +16,7 @@ import com.ibareq.nestedrecyclerviewsample.databinding.ItemStoriesListBinding
 import com.ibareq.nestedrecyclerviewsample.ui.home.stories.StoriesAdapter
 import java.lang.Exception
 
-class HomeAdapter(private val items: List<HomeItem<Any>>) : RecyclerView.Adapter<HomeAdapter.BaseHomeViewHolder>() {
+class HomeAdapter(private val items: List<HomeItem<Any>>, private val listener: HomeActionsListener) : RecyclerView.Adapter<HomeAdapter.BaseHomeViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHomeViewHolder {
@@ -47,7 +47,7 @@ class HomeAdapter(private val items: List<HomeItem<Any>>) : RecyclerView.Adapter
 
     private fun bindStories(holder: StoriesViewHolder, position: Int){
         val stories = items[position].item as List<Story>
-        val adapter = StoriesAdapter(stories)
+        val adapter = StoriesAdapter(stories, listener)
         holder.binding.apply {
             recyclerStories.adapter = adapter
         }
@@ -57,6 +57,7 @@ class HomeAdapter(private val items: List<HomeItem<Any>>) : RecyclerView.Adapter
         val hintText = items[position].item as String
         holder.binding.apply {
             inputNewPost.hint = hintText
+            iconPublish.setOnClickListener { listener.onPublishText(inputNewPost.text.toString()) }
         }
     }
 
@@ -67,6 +68,8 @@ class HomeAdapter(private val items: List<HomeItem<Any>>) : RecyclerView.Adapter
             textDate.text = currentPost.date
             Glide.with(this.root.context).load(currentPost.postImgUrl).into(imagePost)
             Glide.with(this.root.context).load(currentPost.profileImgUrl).into(imageProfile)
+            iconFavourite.setOnClickListener { listener.onFavouritePost(currentPost) }
+            iconShare.setOnClickListener { listener.onSharePost(currentPost) }
         }
     }
 

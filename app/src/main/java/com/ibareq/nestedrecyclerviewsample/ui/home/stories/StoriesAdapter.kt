@@ -9,9 +9,10 @@ import com.ibareq.nestedrecyclerviewsample.R
 import com.ibareq.nestedrecyclerviewsample.data.domain.Story
 import com.ibareq.nestedrecyclerviewsample.databinding.ItemAddStoryBinding
 import com.ibareq.nestedrecyclerviewsample.databinding.ItemStoryBinding
+import com.ibareq.nestedrecyclerviewsample.ui.home.HomeActionsListener
 import java.lang.Exception
 
-class StoriesAdapter(private val items: List<Story>) : RecyclerView.Adapter<StoriesAdapter.BaseStoryViewHolder>() {
+class StoriesAdapter(private val items: List<Story>,private val listener: HomeActionsListener) : RecyclerView.Adapter<StoriesAdapter.BaseStoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseStoryViewHolder {
         return when(viewType){
@@ -36,7 +37,7 @@ class StoriesAdapter(private val items: List<Story>) : RecyclerView.Adapter<Stor
 
     private fun bindAddStory(holder: AddStoryViewHolder, position: Int){
         holder.binding.apply {
-
+            root.setOnClickListener { listener.addNewStory() }
         }
     }
 
@@ -49,6 +50,7 @@ class StoriesAdapter(private val items: List<Story>) : RecyclerView.Adapter<Stor
                 ringStoryNotSeen.visibility = View.VISIBLE
             }
             Glide.with(this.root.context).load(currentStory.imgUrl).into(imageStory)
+            root.setOnClickListener { listener.onClickStory(currentStory) }
         }
     }
 
