@@ -17,6 +17,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun setup() {
         val itemsList: MutableList<HomeItem<Any>> = mutableListOf()
+        itemsList.add(HomeItem(DataSource.getStories(), HomeItemType.TYPE_STORIES))
         itemsList.add(HomeItem("Update your status", HomeItemType.TYPE_NEW_POST))
         itemsList.addAll(
             DataSource.getPosts().map { it.toHomeItem() }

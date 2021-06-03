@@ -7,20 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ibareq.nestedrecyclerviewsample.R
 import com.ibareq.nestedrecyclerviewsample.data.domain.HomeItem
 import com.ibareq.nestedrecyclerviewsample.data.domain.Post
+import com.ibareq.nestedrecyclerviewsample.data.domain.Story
 import com.ibareq.nestedrecyclerviewsample.data.domain.enums.HomeItemType
 import com.ibareq.nestedrecyclerviewsample.databinding.ItemNewPostBinding
 import com.ibareq.nestedrecyclerviewsample.databinding.ItemPostBinding
 import com.ibareq.nestedrecyclerviewsample.databinding.ItemStoriesListBinding
+import com.ibareq.nestedrecyclerviewsample.ui.home.stories.StoriesAdapter
 import java.lang.Exception
 
-class HomeAdapter(val items: List<HomeItem<Any>>) : RecyclerView.Adapter<HomeAdapter.BaseHomeViewHolder>() {
+class HomeAdapter(private val items: List<HomeItem<Any>>) : RecyclerView.Adapter<HomeAdapter.BaseHomeViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHomeViewHolder {
         return when(viewType){
             VIEW_TYPE_STORIES -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_stories_list, parent, false)
-                PostViewHolder(view)
+                StoriesViewHolder(view)
             }
             VIEW_TYPE_NEW_POST -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_new_post, parent, false)
@@ -43,7 +45,11 @@ class HomeAdapter(val items: List<HomeItem<Any>>) : RecyclerView.Adapter<HomeAda
     }
 
     private fun bindStories(holder: StoriesViewHolder, position: Int){
-
+        val stories = items[position].item as List<Story>
+        val adapter = StoriesAdapter(stories)
+        holder.binding.apply {
+            recyclerStories.adapter = adapter
+        }
     }
 
     private fun bindNewPost(holder: NewPostViewHolder, position: Int){

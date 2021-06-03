@@ -8,6 +8,7 @@
     <color name="secondary_text_color_light">#80000000</color>
     <color name="secondary_text_color_dark">#80ffffff</color>
     <color name="grey">#888888</color>
+    <color name="transpernt_grey">#80808080</color>
     <color name="background_color">#EDEDED</color>
     <color name="input_background_color">#FFFFFF</color>
 </resources>
